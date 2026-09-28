@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOEFL / IELTS Drill</title>
+<!-- Font: dipakai kalau sudah terpasang di komputer / saat online.
+     Offline tanpa font ini pun tampilan tetap utuh (memakai fallback lokal). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" onerror="this.remove()">
+<style>
+@font-face{font-family:"Caprasimo";src:local("Caprasimo");font-display:swap}
+@font-face{font-family:"Figtree";src:local("Figtree");font-display:swap}
+</style>
+<style>
+:root{
+  --bg:#f7f0e4; --bg-2:#efe4d2; --panel:#fffaf2; --panel-2:#faf1e3;
+  --ink:#231f1c; --muted:#7c7064; --line:#e6dac7;
+  --brand:#b45f2c; --brand-ink:#8f4a1f; --brand-soft:#f7e5d5;
+  --sage:#6c7d51; --sage-soft:#eaeedd;
+  --ok:#4f7a3a; --ok-soft:#e8f0dd; --bad:#a8351f; --bad-soft:#fae3dd;
+  --warn:#8a5a00; --warn-soft:#fbeed4;
+  --radius:20px; --radius-sm:14px;
+  --shadow:0 1px 2px rgba(70,45,20,.05), 0 14px 30px -14px rgba(70,45,20,.20);
+  --shadow-lg:0 2px 4px rgba(70,45,20,.06), 0 26px 50px -20px rgba(70,45,20,.28);
+  --font-display:"Caprasimo","Rockwell","Bookman Old Style","Georgia",serif;
+  --font-body:"Figtree","Avenir Next","Segoe UI Variable","Segoe UI",-apple-system,BlinkMacSystemFont,"Trebuchet MS",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17130f; --bg-2:#1f1913; --panel:#221c17; --panel-2:#2a2219;
+    --ink:#f4ebe0; --muted:#a4948300; --muted:#a89785; --line:#382e25;
+    --brand:#e08c53; --brand-ink:#f2ab75; --brand-soft:#3a2516;
+    --sage:#a6b881; --sage-soft:#262d1c;
+    --ok:#8fc06a; --ok-soft:#1e2917; --bad:#f39179; --bad-soft:#361f1a;
+    --warn:#e5bb6b; --warn-soft:#2f2412;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 34px -16px rgba(0,0,0,.7);
+    --shadow-lg:0 2px 6px rgba(0,0,0,.55), 0 30px 60px -22px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17130f; --bg-2:#1f1913; --panel:#221c17; --panel-2:#2a2219;
+  --ink:#f4ebe0; --muted:#a89785; --line:#382e25;
+  --brand:#e08c53; --brand-ink:#f2ab75; --brand-soft:#3a2516;
+  --sage:#a6b881; --sage-soft:#262d1c;
+  --ok:#8fc06a; --ok-soft:#1e2917; --bad:#f39179; --bad-soft:#361f1a;
+  --warn:#e5bb6b; --warn-soft:#2f2412;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 34px -16px rgba(0,0,0,.7);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.55), 0 30px 60px -22px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:16px/1.65 var(--font-body);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  background-image:
+    radial-gradient(56rem 34rem at 88% -14%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 70%),
+    radial-gradient(48rem 30rem at -10% 8%, color-mix(in oklab, var(--sage) 15%, transparent), transparent 68%);
+  background-attachment:fixed;
+}
+::selection{background:color-mix(in oklab, var(--brand) 28%, transparent)}
+a{color:var(--brand-ink);text-decoration-thickness:1.5px;text-underline-offset:3px}
+a:hover{color:var(--brand)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:999px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px 96px}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in oklab, var(--panel) 82%, transparent);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hd{max-width:1040px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:14px}
+.logo{
+  font-family:var(--font-display);font-weight:400;font-size:19px;letter-spacing:.005em;
+  display:flex;align-items:center;gap:11px;cursor:pointer;color:var(--ink);line-height:1
+}
+.logo .dot{
+  width:13px;height:13px;border-radius:50%;background:var(--brand);flex:none;
+  box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 22%, transparent);
+  transition:box-shadow .2s
+}
+.logo:hover .dot{box-shadow:0 0 0 7px color-mix(in oklab, var(--brand) 20%, transparent)}
+.hd .sp{flex:1}
+.iconbtn{
+  border:1px solid var(--line);background:transparent;color:var(--muted);
+  border-radius:999px;padding:7px 15px;font:600 13px/1.2 var(--font-body);cursor:pointer;
+  transition:color .15s,border-color .15s,background .15s,transform .12s
+}
+.iconbtn:hover{color:var(--brand-ink);border-color:var(--brand);background:var(--brand-soft)}
+.iconbtn:active{transform:translateY(1px)}
+
+/* ---------- generic type ---------- */
+h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(30px,4.6vw,44px);line-height:1.06;letter-spacing:-.005em;
+  margin:38px 0 10px;max-width:22ch;text-wrap:balance
+}
+h2{
+  font-family:var(--font-display);font-weight:400;font-size:22px;line-height:1.2;
+  margin:40px 0 14px;display:flex;align-items:center;gap:10px
+}
+h2::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sage);flex:none}
+.sub{color:var(--muted);margin:0;font-size:16.5px;max-width:62ch}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow)
+}
+.pad{padding:22px 24px}
+.grid{display:grid;gap:14px}
+@media(min-width:700px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+.btn{
+  border:0;background:var(--brand);color:#fff8f1;border-radius:999px;padding:12px 22px;
+  font:700 14.5px/1.15 var(--font-body);letter-spacing:.01em;cursor:pointer;
+  box-shadow:0 8px 18px -10px color-mix(in oklab, var(--brand) 80%, transparent);
+  transition:transform .12s,box-shadow .18s,background .15s
+}
+.btn:hover{background:var(--brand-ink);transform:translateY(-1px);
+  box-shadow:0 12px 24px -10px color-mix(in oklab, var(--brand) 85%, transparent)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand-ink);background:var(--brand-soft);box-shadow:none}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none;transform:none}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{
+  display:inline-block;padding:4px 12px;border-radius:999px;
+  font:700 11px/1.5 var(--font-body);text-transform:uppercase;letter-spacing:.1em;
+  background:var(--brand-soft);color:var(--brand-ink);border:1px solid transparent
+}
+:root[data-theme="dark"] .pill{color:var(--brand-ink)}
+.pill.grey{background:transparent;color:var(--muted);border-color:var(--line);letter-spacing:.07em;text-transform:none;font-weight:600;font-size:11.5px}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+
+/* ---------- theme cards ---------- */
+.tcard{
+  position:relative;overflow:hidden;text-align:left;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 22px 20px;cursor:pointer;font-family:var(--font-body);color:var(--ink);
+  box-shadow:var(--shadow);transition:border-color .16s,transform .16s,box-shadow .2s
+}
+.tcard::after{
+  content:"";position:absolute;right:-42px;top:-42px;width:118px;height:118px;border-radius:50%;
+  background:color-mix(in oklab, var(--sage) 20%, transparent);transition:transform .3s
+}
+.tcard:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.tcard:hover::after{transform:scale(1.18) translate(-6px,6px);
+  background:color-mix(in oklab, var(--brand) 22%, transparent)}
+.tcard .tt{
+  position:relative;font-family:var(--font-display);font-weight:400;font-size:21px;
+  line-height:1.15;margin-bottom:8px
+}
+.tcard .td{position:relative;font-size:14px;color:var(--muted);min-height:46px;max-width:30ch}
+.tcard .tn{
+  position:relative;margin-top:16px;font:600 12px/1.4 var(--font-body);letter-spacing:.04em;
+  text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;
+  align-items:baseline;gap:8px
+}
+.bar{height:6px;border-radius:99px;background:color-mix(in oklab, var(--ink) 9%, transparent);overflow:hidden;margin-top:10px;position:relative}
+.bar > i{display:block;height:100%;background:var(--sage);border-radius:99px;transition:width .4s}
+
+/* ---------- quiz ---------- */
+.qtop{display:flex;align-items:center;gap:11px;margin:26px 0 16px;flex-wrap:wrap}
+.prog{flex:1;min-width:150px;height:8px;background:color-mix(in oklab, var(--ink) 9%, transparent);border-radius:99px;overflow:hidden}
+.prog > i{display:block;height:100%;background:var(--brand);border-radius:99px;transition:width .35s ease}
+.passage{
+  background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 24px;margin-bottom:16px;max-height:360px;overflow:auto;box-shadow:var(--shadow)
+}
+.passage h4{
+  margin:0 0 12px;font:700 11px/1.4 var(--font-body);text-transform:uppercase;
+  letter-spacing:.14em;color:var(--brand-ink)
+}
+.passage p{margin:0 0 12px;white-space:pre-wrap;font-size:15.5px;line-height:1.75;max-width:70ch}
+.qtext{
+  font-size:19px;line-height:1.62;margin:0 0 20px;white-space:pre-wrap;max-width:64ch;
+  letter-spacing:-.004em;text-wrap:pretty
+}
+.qtext u{text-decoration:none;border-bottom:2.5px solid var(--brand);padding-bottom:1px}
+.qtext sup{color:var(--brand);font-weight:700;font-size:11px;margin-left:1px}
+.opt{
+  display:flex;gap:13px;align-items:flex-start;width:100%;text-align:left;background:var(--panel);
+  color:var(--ink);border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  padding:13px 16px;margin-bottom:10px;cursor:pointer;font:16px/1.55 var(--font-body);
+  transition:border-color .13s,background .13s,transform .13s
+}
+.opt:hover:not(.locked){border-color:var(--brand);background:var(--brand-soft);transform:translateX(3px)}
+.opt .k{
+  flex:none;width:27px;height:27px;border-radius:50%;
+  background:color-mix(in oklab, var(--ink) 8%, transparent);color:var(--muted);
+  display:grid;place-items:center;font:700 12.5px/1 var(--font-body);margin-top:1px
+}
+.opt.locked{cursor:default;transform:none}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .k{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{background:var(--bad);color:#fff}
+.fb{border-radius:var(--radius-sm);padding:16px 18px;margin:16px 0;font-size:15px;line-height:1.65;border:1.5px solid;max-width:70ch}
+.fb.ok{background:var(--ok-soft);border-color:var(--ok)}
+.fb.bad{background:var(--bad-soft);border-color:var(--bad)}
+.fb > b:first-child{
+  display:block;margin-bottom:6px;font-family:var(--font-display);font-weight:400;font-size:16.5px
+}
+.nav{display:flex;gap:12px;margin-top:22px;align-items:center;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.nav .sp{flex:1}
+
+/* ---------- result ---------- */
+.score{
+  font-family:var(--font-display);font-weight:400;font-size:clamp(52px,8vw,72px);
+  line-height:.92;letter-spacing:-.02em;color:var(--brand)
+}
+.rlist .ri{border-top:1px solid var(--line);padding:18px 0}
+.rlist .ri:first-child{border-top:0;padding-top:4px}
+.rlist .ri:last-child{padding-bottom:4px}
+table.kv{width:100%;border-collapse:collapse;font-size:14.5px}
+table.kv td{padding:11px 0;border-bottom:1px solid var(--line)}
+table.kv tr:last-child td{border-bottom:0}
+table.kv td:first-child{font-family:var(--font-display);font-weight:400;font-size:16px}
+table.kv td:last-child{text-align:right;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.empty{padding:56px 24px;text-align:center;color:var(--muted)}
+.empty h1{margin:0 auto 10px}
+select,input[type=number],textarea{
+  font:15px/1.5 var(--font-body);padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);
+  background:var(--panel);color:var(--ink);transition:border-color .15s
+}
+select:hover,input[type=number]:hover{border-color:var(--brand)}
+label.small{font:600 12px/1.6 var(--font-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+label.small select{margin-top:5px;text-transform:none;letter-spacing:0;font-size:15px;font-weight:400;color:var(--ink)}
+.chk{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);cursor:pointer}
+.chk input{accent-color:var(--brand);width:16px;height:16px}
+.chk:hover{color:var(--ink)}
+
+/* ---------- exam selector ---------- */
+.seg{display:inline-flex;gap:4px;padding:5px;border:1.5px solid var(--line);border-radius:999px;background:var(--panel);box-shadow:var(--shadow)}
+.seg-opt{
+  border:0;background:transparent;color:var(--muted);border-radius:999px;padding:9px 20px;
+  font:700 13px/1.2 var(--font-body);letter-spacing:.03em;cursor:pointer;
+  transition:background .15s,color .15s
+}
+.seg-opt:hover{color:var(--brand-ink);background:var(--brand-soft)}
+.seg-opt.on{background:var(--brand);color:#fff8f1}
+.seg-opt.on:hover{background:var(--brand-ink);color:#fff8f1}
+.seg-opt .c{opacity:.65;font-weight:600;margin-left:6px;font-variant-numeric:tabular-nums}
+.kicker{font:700 11.5px/1.5 var(--font-body);text-transform:uppercase;letter-spacing:.14em;color:var(--brand-ink);margin:0 0 6px}
+
+/* ---------- banner belajar ---------- */
+.learn{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  padding:24px 26px;margin:22px 0 0;color:#fff6ec;
+  background:linear-gradient(118deg, var(--brand) 0%, var(--brand-ink) 92%);
+  box-shadow:var(--shadow-lg)
+}
+.learn::after{content:"";position:absolute;right:-62px;top:-58px;width:190px;height:190px;border-radius:50%;
+  background:rgba(255,246,236,.13)}
+.learn::before{content:"";position:absolute;right:56px;bottom:-46px;width:96px;height:96px;border-radius:50%;
+  background:rgba(255,246,236,.10)}
+.learn > *{position:relative}
+.learn .lk{font:700 11.5px/1.5 var(--font-body);text-transform:uppercase;letter-spacing:.16em;opacity:.8;margin:0 0 7px}
+.learn .lt{font-family:var(--font-display);font-weight:400;font-size:clamp(23px,3vw,28px);line-height:1.12;margin:0 0 7px}
+.learn .ld{font-size:15px;line-height:1.6;opacity:.9;max-width:52ch;margin:0}
+.learn .btn.on-dark{background:#fff6ec;color:var(--brand-ink);box-shadow:0 8px 20px -10px rgba(0,0,0,.45)}
+.learn .btn.on-dark:hover{background:#fff;color:var(--brand-ink)}
+.learn .btn.wire{background:transparent;color:#fff6ec;border:1.5px solid rgba(255,246,236,.5);box-shadow:none}
+.learn .btn.wire:hover{background:rgba(255,246,236,.14);border-color:#fff6ec;color:#fff6ec}
+.learn .lbar{height:6px;border-radius:99px;background:rgba(255,246,236,.25);overflow:hidden;margin:16px 0 0;max-width:340px}
+.learn .lbar > i{display:block;height:100%;background:#fff6ec;border-radius:99px;transition:width .4s}
+
+/* ---------- daftar & isi pelajaran ---------- */
+.unit{font-family:var(--font-display);font-weight:400;font-size:14px;letter-spacing:.02em;
+  color:var(--brand-ink);background:var(--brand-soft);border-radius:999px;padding:5px 14px;display:inline-block;margin:34px 0 14px}
+.lcard{
+  position:relative;overflow:hidden;text-align:left;width:100%;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;cursor:pointer;
+  font-family:var(--font-body);color:var(--ink);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
+  transition:border-color .16s,transform .16s,box-shadow .2s
+}
+.lcard::after{
+  content:"";position:absolute;right:-42px;top:-42px;width:118px;height:118px;border-radius:50%;
+  background:color-mix(in oklab, var(--brand) 14%, transparent);transition:transform .3s,background .3s
+}
+.lcard:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.lcard:hover::after{transform:scale(1.18) translate(-6px,6px);background:color-mix(in oklab, var(--brand) 24%, transparent)}
+.lcard.fin::after{background:color-mix(in oklab, var(--sage) 26%, transparent)}
+.lcard .num{
+  position:relative;flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:var(--brand-soft);color:var(--brand-ink);font:700 13.5px/1 var(--font-body);margin-bottom:14px
+}
+.lcard.fin .num{background:var(--ok);color:#fff}
+.lcard .lt2{position:relative;font-family:var(--font-display);font-weight:400;font-size:20px;line-height:1.16;margin-bottom:7px}
+.lcard .ld2{position:relative;font-size:14px;color:var(--muted);line-height:1.55;flex:1;min-height:44px}
+.lcard .lm{position:relative;margin-top:14px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.stepdots{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.stepdots > button{
+  width:11px;height:11px;padding:0;border-radius:50%;flex:none;cursor:pointer;
+  border:1.5px solid var(--line);background:var(--panel);transition:transform .12s,background .15s,border-color .15s
+}
+.stepdots > button:hover{transform:scale(1.25);border-color:var(--brand)}
+.stepdots > button.on{background:var(--brand);border-color:var(--brand);width:26px;border-radius:99px}
+.stepdots > button.past{background:var(--brand-soft);border-color:color-mix(in oklab, var(--brand) 40%, transparent)}
+.lesson h3{
+  font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.16;margin:0 0 16px
+}
+.lesson p,.lesson li{font-size:16px;line-height:1.72;max-width:66ch;text-wrap:pretty}
+.lesson p{margin:0 0 14px}
+.lesson ul,.lesson ol{margin:0 0 14px;padding-left:22px}
+.lesson li{margin-bottom:8px}
+.lesson li::marker{color:var(--brand)}
+.lesson b{font-weight:700}
+.lesson em{font-style:italic;color:var(--brand-ink)}
+.lesson s{color:var(--bad);text-decoration-thickness:2px}
+.lesson .tw{overflow-x:auto;margin:0 0 16px;-webkit-overflow-scrolling:touch}
+.lesson table{border-collapse:collapse;font-size:14.5px;line-height:1.55;min-width:100%}
+.lesson th,.lesson td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.lesson th{background:var(--panel-2);font-weight:600;font-size:13.5px;letter-spacing:.01em}
+.lesson td em,.lesson th em{font-style:italic}
+.lesson .small{font-size:13.5px;color:var(--muted)}
+.exbox{border:1.5px dashed color-mix(in oklab, var(--brand) 42%, transparent);border-radius:var(--radius);
+  padding:20px 22px;background:var(--panel-2)}
+.exbox .qtext{font-size:17.5px;margin-bottom:16px}
+
+/* ---------- resume ---------- */
+.resume{
+  position:relative;overflow:hidden;background:var(--sage-soft);
+  border:1.5px solid color-mix(in oklab, var(--sage) 45%, transparent);
+  border-radius:var(--radius);padding:20px 24px;margin:22px 0 4px;box-shadow:var(--shadow)
+}
+.resume::after{content:"";position:absolute;right:-50px;bottom:-60px;width:150px;height:150px;border-radius:50%;
+  background:color-mix(in oklab, var(--sage) 18%, transparent)}
+.resume .rt{position:relative;font-family:var(--font-display);font-weight:400;font-size:20px;line-height:1.2;margin-bottom:4px}
+
+/* ---------- question navigator ---------- */
+.qnav{display:flex;flex-wrap:wrap;gap:7px;max-height:132px;overflow:auto;padding:2px}
+.qnum{
+  position:relative;width:38px;height:38px;border-radius:50%;flex:none;
+  border:1.5px solid var(--line);background:var(--panel);color:var(--muted);
+  font:700 13px/1 var(--font-body);cursor:pointer;font-variant-numeric:tabular-nums;
+  transition:transform .12s,border-color .15s,background .15s,color .15s
+}
+.qnum:hover{border-color:var(--brand);color:var(--brand-ink);transform:translateY(-2px)}
+.qnum.done{background:var(--brand-soft);border-color:color-mix(in oklab, var(--brand) 45%, transparent);color:var(--brand-ink)}
+.qnum.cur{background:var(--brand);border-color:var(--brand);color:#fff8f1;box-shadow:0 0 0 4px color-mix(in oklab, var(--brand) 20%, transparent)}
+.qnum.flag::after{content:"";position:absolute;top:2px;right:2px;width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.qnum.cur.flag::after{background:#fff8f1}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:12px;height:12px;border-radius:50%;display:block}
+
+/* ---------- selected option (belum dinilai) ---------- */
+.opt.sel{border-color:var(--brand);background:var(--brand-soft)}
+.opt.sel .k{background:var(--brand);color:#fff8f1}
+
+/* ---------- result detail ---------- */
+.ansline{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:14.5px}
+.ansline b{font-weight:700}
+.expl{
+  background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:14px 16px;margin-top:11px;font-size:14.5px;line-height:1.65;max-width:72ch
+}
+.expl .kicker{margin-bottom:4px}
+textarea{width:100%;border-radius:var(--radius-sm);padding:14px 16px;line-height:1.6}
+.notice{
+  background:var(--warn-soft);border:1px solid var(--warn);border-radius:var(--radius-sm);
+  padding:15px 18px;font-size:14px;line-height:1.6;margin:20px 0;max-width:70ch
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="logo" onclick="go('home')"><span class="dot"></span> TOEFL / IELTS Drill</div>
+    <div class="sp"></div>
+    <button class="iconbtn" onclick="go('learn')">Belajar</button>
+    <button class="iconbtn" onclick="go('stats')">Statistik</button>
+    <button class="iconbtn" onclick="go('flags')">Ditandai</button>
+    <button class="iconbtn" onclick="toggleTheme()" id="themeBtn">Tema</button>
+  </div>
+</header>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   REGISTRY — diisi oleh file-file di folder data/
+   ============================================================ */
+window.TOEFLDRILL = {
+  questions: [],
+  passages: {},
+  sources: {},
+  addBank: function(bank){
+    var src = bank.source || {};
+    if(src.id) this.sources[src.id] = src;
+    if(bank.passages) for(var k in bank.passages) this.passages[k] = bank.passages[k];
+    (bank.questions||[]).forEach(function(q){
+      q.sourceId = q.sourceId || src.id;
+      window.TOEFLDRILL.questions.push(q);
+    });
+  }
+};
+</script>
+
+<!-- ====== BANK SOAL (tambah baris baru tiap tahap selesai) ====== -->
+<script src="data/bank-01-cmedia.js"></script>
+<script src="data/bank-02-ets-ibt.js"></script>
+<script src="data/bank-03-petersons-structure.js"></script>
+<script src="data/bank-04-petersons-reading.js"></script>
+<script src="data/bank-05-bestofbest.js"></script>
+<script src="data/bank-06-barron-ielts.js"></script>
+<script src="data/bank-07-barron-listening.js"></script>
+<script src="data/bank-08-ielts202.js"></script>
+<script src="data/bank-09-petersons-inline.js"></script>
+<script src="data/bank-10-barron-completion.js"></script>
+<script src="data/bank-11-barron-isian.js"></script>
+<script src="data/bank-12-barron-pulih.js"></script>
+<script src="data/bank-13-swe-dasar.js"></script>
+<script src="data/bank-14-pbt-a.js"></script>
+<script src="data/bank-15-pbt-b.js"></script>
+<script src="data/bank-16-itp.js"></script>
+<script src="data/bank-17-magoosh.js"></script>
+<script src="data/bank-18-unipma.js"></script>
+<!-- ====== MATERI BELAJAR ====== -->
+<script src="data/lessons-03-tatabahasa.js"></script>
+<script src="data/lessons-01-structure.js"></script>
+<script src="data/lessons-02-reading.js"></script>
+<script src="data/topics.js"></script>   <!-- indeks: soal setopik lintas bank -->
+<!-- ============================================================ -->
+
+<script>
+/* ============================================================
+   TEMA
+   ============================================================ */
+var THEMES = [
+  {id:'structure',  name:'Structure',           desc:'Melengkapi kalimat rumpang — tata bahasa inti TOEFL.'},
+  {id:'written',    name:'Written Expression',  desc:'Mencari bagian kalimat yang salah secara gramatikal.'},
+  {id:'reading',    name:'Reading',             desc:'Pemahaman bacaan akademik: main idea, inference, detail.'},
+  {id:'vocabulary', name:'Vocabulary',          desc:'Makna kata dalam konteks & sinonim.'},
+  {id:'listening',  name:'Listening',           desc:'Soal simak — dilengkapi transkrip sebagai pengganti audio.'},
+  {id:'writing',    name:'Writing',             desc:'Prompt esai & integrated writing untuk latihan menulis.'},
+  {id:'speaking',   name:'Speaking',            desc:'Prompt bicara untuk latihan lisan mandiri.'}
+];
+
+/* ============================================================
+   STATE / PENYIMPANAN
+   ============================================================ */
+var MEM = {};
+var store = {
+  get:function(k,d){
+    try{ var v = localStorage.getItem(k); return v===null? d : JSON.parse(v); }
+    catch(e){ return (k in MEM)? MEM[k] : d; }
+  },
+  set:function(k,v){
+    try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ MEM[k]=v; }
+  }
+};
+var S = {
+  get hist(){ return store.get('td_hist',{}); },      // {qid:{n,ok,last}}
+  set hist(v){ store.set('td_hist',v); },
+  get flags(){ return store.get('td_flags',[]); },
+  set flags(v){ store.set('td_flags',v); }
+};
+function markResult(qid, ok){
+  var h = S.hist; var e = h[qid] || {n:0,ok:0};
+  e.n++; if(ok) e.ok++; e.last = ok?1:0; h[qid]=e; S.hist=h;
+}
+function toggleFlag(qid){
+  var f = S.flags; var i = f.indexOf(qid);
+  if(i<0) f.push(qid); else f.splice(i,1);
+  S.flags = f; return i<0;
+}
+function isFlagged(qid){ return S.flags.indexOf(qid)>=0; }
+
+/* ---------- pilihan ujian: TOEFL / IELTS / campur ---------- */
+var EXAMS = [
+  {id:'toefl', name:'TOEFL', desc:'Structure, Written Expression, Reading & Vocabulary gaya TOEFL.'},
+  {id:'ielts', name:'IELTS', desc:'Reading, Listening & Writing dari bank IELTS.'},
+  {id:'mix',   name:'Campur', desc:'Semua bank soal digabung jadi satu kolam.'}
+];
+var EXAM = store.get('td_exam','mix');
+function examOf(q){
+  var s = window.TOEFLDRILL.sources[q.sourceId] || {};
+  return /ielts/i.test(s.test || s.name || '') ? 'ielts' : 'toefl';
+}
+function examFilter(list, ex){
+  ex = ex || EXAM;
+  if(ex==='mix') return list;
+  return list.filter(function(q){ return examOf(q)===ex; });
+}
+function setExam(i){ EXAM = EXAMS[i].id; store.set('td_exam', EXAM); render(); }
+function examName(id){ var e=EXAMS.filter(function(x){return x.id===id})[0]; return e?e.name:'Campur'; }
+
+/* ---------- sesi tersimpan (bisa dilanjutkan) ---------- */
+function saveSess(){
+  if(!SESS || SESS.done) return;
+  store.set('td_sess', {
+    ids: SESS.list.map(function(q){return q.id}),
+    i: SESS.i, answers: SESS.answers, open: SESS.open||{},
+    started: SESS.started, theme: SESS.theme||null, exam: SESS.exam||EXAM
+  });
+}
+function savedSess(){
+  var d = store.get('td_sess', null);
+  return (d && d.ids && d.ids.length) ? d : null;
+}
+function loadSess(){
+  var d = savedSess(); if(!d) return null;
+  var map = {}; Q().forEach(function(q){ map[q.id]=q; });
+  var list = d.ids.map(function(id){ return map[id]; }).filter(Boolean);
+  if(!list.length) return null;
+  SESS = {list:list, i:Math.min(d.i||0, list.length-1), answers:d.answers||[],
+          open:d.open||{}, started:d.started, theme:d.theme, exam:d.exam};
+  return SESS;
+}
+function clearSess(){ store.set('td_sess', null); }
+function resumeSess(){ if(loadSess()) go('quiz'); else { clearSess(); render(); } }
+function dropSess(){ if(confirm('Buang sesi yang belum selesai itu?')){ clearSess(); SESS=null; render(); } }
+function countAnswered(s){
+  s = s || SESS; var c = 0;
+  s.list.forEach(function(q,i){
+    if(q.type==='open'){ if(s.open && s.open[i]) c++; }
+    else if(s.answers[i]!=null) c++;
+  });
+  return c;
+}
+
+/* ---------- MATERI BELAJAR ---------- */
+var LESSONS = window.TOEFLDRILL_LESSONS || [];
+var LP = store.get('td_learn', {});   // {lessonId:{done:true}}
+function saveLP(){ store.set('td_learn', LP); }
+function lessonDone(id){ return !!(LP[id] && LP[id].done); }
+function lessonsDoneCount(){ return LESSONS.filter(function(l){ return lessonDone(l.id); }).length; }
+function lessonById(id){ return LESSONS.filter(function(l){ return l.id===id; })[0]; }
+function nextLesson(){
+  for(var i=0;i<LESSONS.length;i++){ if(!lessonDone(LESSONS[i].id)) return LESSONS[i]; }
+  return LESSONS[0];
+}
+function lessonUnits(){
+  var out=[], seen={};
+  LESSONS.forEach(function(l){ if(!seen[l.unit]){ seen[l.unit]=1; out.push(l.unit); } });
+  return out;
+}
+/* soal dari bank yang topiknya sesuai pelajaran ini.
+   Dua sumber digabung:
+   (a) pencocokan sub-tema lewat l.match — cepat, tapi sub-tema antarbank tidak seragam;
+   (b) data/topics.js — indeks yang menggolongkan soal dari isi pembahasannya sendiri,
+       supaya soal setopik di bank lain (yang sub-temanya bernama umum seperti
+       "Review Test H" atau "ITP Structure") ikut terbawa ke topik yang tepat. */
+var TOPIDX = {};
+function lessonPool(id){
+  if(TOPIDX[id]) return TOPIDX[id];
+  var arr = (window.TOEFLDRILL_TOPICS||{})[id] || [], o = {};
+  for(var i=0;i<arr.length;i++) o[arr[i]] = 1;
+  return (TOPIDX[id] = o);
+}
+function lessonQuestions(l){
+  var m = (l.match||[]).map(function(s){ return s.toLowerCase(); });
+  var extra = lessonPool(l.id);
+  return examFilter(Q()).filter(function(q){
+    if(extra[q.id]) return true;
+    if((l.themes||[]).indexOf(q.theme)<0) return false;
+    if(!m.length) return true;
+    var sub = String(q.subtheme||'').toLowerCase();
+    for(var i=0;i<m.length;i++){ if(sub.indexOf(m[i])>=0) return true; }
+    return false;
+  });
+}
+function lessonSteps(l){ return l.steps || []; }
+function startLessonDrill(id, n){
+  var l = lessonById(id); if(!l) return;
+  var qs = lessonQuestions(l);
+  if(!qs.length){ alert('Belum ada soal di bank yang cocok dengan topik ini.'); return; }
+  var ids = shuffle(qs).slice(0, n||10).map(function(q){ return q.id; });
+  startQuiz({ids:ids, order:'seq'});
+}
+
+function toggleTheme(){
+  var r = document.documentElement;
+  var cur = r.getAttribute('data-theme');
+  var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+           : (matchMedia('(prefers-color-scheme: dark)').matches ? 'light':'dark');
+  r.setAttribute('data-theme', next); store.set('td_theme', next);
+}
+(function(){ var t = store.get('td_theme',null); if(t) document.documentElement.setAttribute('data-theme',t); })();
+
+/* ============================================================
+   HELPER
+   ============================================================ */
+var Q  = function(){ return window.TOEFLDRILL.questions; };
+var PS = function(){ return window.TOEFLDRILL.passages; };
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function rich(s){ // izinkan <u> <b> <i> <sup> dari bank soal
+  return esc(s).replace(/&lt;(\/?)(u|b|i|sup|em|strong)&gt;/g,'<$1$2>')
+               .replace(/&lt;br\s*\/?&gt;/g,'<br>');
+}
+function byTheme(t){ return Q().filter(function(q){ return q.theme===t; }); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+function srcName(id){ var s = window.TOEFLDRILL.sources[id]; return s? s.name : (id||'—'); }
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+var VIEW = {name:'home'};
+function go(name, opt){
+  VIEW = Object.assign({name:name}, opt||{});
+  try{ history.pushState({view:VIEW}, ''); }catch(e){}
+  render(); scrollTo(0,0);
+}
+try{ history.replaceState({view:VIEW}, ''); }catch(e){}
+window.addEventListener('popstate', function(e){
+  var v = (e.state && e.state.view) ? e.state.view : {name:'home'};
+  if(v.name==='quiz' && !SESS && !loadSess()) v = {name:'home'};
+  if(v.name==='result' && (!SESS || !SESS.list)) v = {name:'home'};
+  VIEW = v; render(); scrollTo(0,0);
+});
+function render(){
+  var el = document.getElementById('app');
+  if(VIEW.name==='home')   el.innerHTML = viewHome();
+  else if(VIEW.name==='setup') el.innerHTML = viewSetup();
+  else if(VIEW.name==='quiz')  { renderQuiz(); return; }
+  else if(VIEW.name==='result')el.innerHTML = viewResult();
+  else if(VIEW.name==='stats') el.innerHTML = viewStats();
+  else if(VIEW.name==='flags') el.innerHTML = viewFlags();
+  else if(VIEW.name==='learn') el.innerHTML = viewLearn();
+  else if(VIEW.name==='lesson'){ renderLesson(); return; }
+}
+
+/* ---------- HOME ---------- */
+function openTheme(i){ go('setup', {theme: THEMES[i].id}); }
+function startMix(){ startQuiz({theme:null, count:20, mode:'mix'}); }
+function startWrongOnly(){ startQuiz({theme:null, count:20, mode:'wrong'}); }
+function startNewOnly(){ startQuiz({theme:null, count:20, mode:'new'}); }
+
+function viewHome(){
+  if(!Q().length) return '<div class="empty"><h1>Bank soal belum termuat</h1>'
+    +'<p>Pastikan folder <b>data/</b> ada di samping file ini dan dibuka lewat file HTML-nya langsung.</p></div>';
+  var all = examFilter(Q());
+  var h = S.hist;
+
+  var seg = '<div class="seg">'+EXAMS.map(function(e,i){
+      var c = examFilter(Q(), e.id).length;
+      return '<button class="seg-opt'+(EXAM===e.id?' on':'')+'" onclick="setExam('+i+')">'
+        +e.name+'<span class="c">'+c+'</span></button>';
+    }).join('')+'</div>';
+  var exDesc = EXAMS.filter(function(e){return e.id===EXAM})[0].desc;
+
+  var cards = THEMES.map(function(t,i){
+    var qs = examFilter(byTheme(t.id)); if(!qs.length) return '';
+    var done = qs.filter(function(q){ return h[q.id]; }).length;
+    var pct = Math.round(done/qs.length*100);
+    return '<button class="tcard" onclick="openTheme('+i+')">'
+      +'<div class="tt">'+t.name+'</div><div class="td">'+t.desc+'</div>'
+      +'<div class="tn"><span>'+qs.length+' soal</span><span>'+pct+'% dikerjakan</span></div>'
+      +'<div class="bar"><i style="width:'+pct+'%"></i></div></button>';
+  }).join('');
+
+  var sv = savedSess(), resume = '';
+  if(sv){
+    var map={}; Q().forEach(function(q){ map[q.id]=q; });
+    var list = sv.ids.map(function(id){return map[id]}).filter(Boolean);
+    if(list.length){
+      var an = countAnswered({list:list, answers:sv.answers||[], open:sv.open||{}});
+      resume = '<div class="resume">'
+        +'<p class="kicker">Sesi belum selesai</p>'
+        +'<div class="rt">'+(sv.theme?themeName(sv.theme):'Sesi campuran')+' · '+examName(sv.exam)+'</div>'
+        +'<div class="small muted" style="position:relative">'+an+' dari '+list.length+' soal sudah terjawab'
+          +(sv.started?' · dimulai '+new Date(sv.started).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'')+'</div>'
+        +'<div class="row" style="margin-top:16px;position:relative">'
+          +'<button class="btn" onclick="resumeSess()">Lanjutkan sesi</button>'
+          +'<button class="btn ghost" onclick="dropSess()">Buang</button>'
+        +'</div></div>';
+    }
+  }
+
+  var learn = '';
+  if(LESSONS.length){
+    var nl = nextLesson(), ld = lessonsDoneCount(), lpct = Math.round(ld/LESSONS.length*100);
+    var fresh = ld===0;
+    learn = '<div class="learn">'
+      +'<p class="lk">Belajar dulu yuk</p>'
+      +'<div class="lt">Pahami materinya sebelum menembak jawaban</div>'
+      +'<p class="ld">'+LESSONS.length+' topik yang bisa kamu pilih bebas — pembahasan dulu, lalu contoh soal, '
+        +'lalu latihan dari bank soal topik yang sama.</p>'
+      +'<div class="lbar"><i style="width:'+lpct+'%"></i></div>'
+      +'<div class="row" style="margin-top:16px">'
+        +'<button class="btn on-dark" onclick="go(\'learn\')">Pilih topik belajar</button>'
+        +(fresh?'':'<button class="btn wire" onclick="openLesson(\''+nl.id+'\')">Lanjut: '+esc(nl.title)+'</button>')
+        +'<span class="small" style="opacity:.8">'+ld+' / '+LESSONS.length+' topik selesai</span>'
+      +'</div></div>';
+  }
+
+  var doneAll = Object.keys(h).length;
+  return learn + resume
+   +'<h1>Mau drilling apa hari ini?</h1>'
+   +'<p class="sub">'+all.length+' soal siap dikerjakan · tanpa batas waktu · '+doneAll+' soal sudah pernah kamu jawab.</p>'
+   +'<div style="margin:22px 0 6px">'+seg+'</div>'
+   +'<p class="sub small">'+exDesc+'</p>'
+   +'<div class="grid g3" style="margin-top:22px">'+cards+'</div>'
+   +'<h2>Mode cepat</h2>'
+   +'<div class="row">'
+     +'<button class="btn" onclick="startMix()">Campur 20 soal</button>'
+     +'<button class="btn ghost" onclick="startWrongOnly()">Ulang yang pernah salah</button>'
+     +'<button class="btn ghost" onclick="startNewOnly()">Yang belum pernah</button>'
+   +'</div>';
+}
+
+/* ---------- SETUP ---------- */
+function viewSetup(){
+  var t = THEMES.filter(function(x){return x.id===VIEW.theme})[0];
+  var qs = examFilter(byTheme(VIEW.theme));
+  var srcN = {}; qs.forEach(function(q){ srcN[q.sourceId] = (srcN[q.sourceId]||0)+1; });
+  var srcIds = Object.keys(srcN).sort(function(a,b){ return srcN[b]-srcN[a]; });
+  var subN = {}; qs.forEach(function(q){ if(q.subtheme) subN[q.subtheme] = (subN[q.subtheme]||0)+1; });
+  var subs = Object.keys(subN).sort(function(a,b){ return subN[b]-subN[a] || a.localeCompare(b); });
+  return '<p class="kicker" style="margin-top:38px">'+examName(EXAM)+'</p>'
+   +'<h1 style="margin-top:0">'+t.name+'</h1><p class="sub">'+t.desc+' — '+qs.length+' soal tersedia.</p>'
+   +'<div class="card pad" style="margin-top:16px">'
+   +'<div class="row" style="gap:16px">'
+     +'<label class="small">Jumlah soal<br><select id="cnt">'
+       +[10,20,30,50,100,qs.length].filter(function(v,i,a){return v<=qs.length&&a.indexOf(v)===i})
+         .map(function(v){return '<option value="'+v+'">'+v+'</option>'}).join('')
+     +'</select></label>'
+     +'<label class="small">Sumber<br><select id="src"><option value="">Semua sumber</option>'
+       +srcIds.map(function(s){return '<option value="'+esc(s)+'">'+esc(srcName(s))+' ('+srcN[s]+')</option>'}).join('')
+     +'</select></label>'
+     +(subs.length>1?'<label class="small">Sub-tema<br><select id="sub"><option value="">Semua</option>'
+       +subs.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+' ('+subN[s]+')</option>'}).join('')+'</select></label>':'')
+     +'<label class="small">Urutan<br><select id="ord"><option value="rand">Acak</option><option value="seq">Sesuai buku</option></select></label>'
+   +'</div>'
+   +'<div class="row" style="margin-top:14px">'
+     +'<label class="chk"><input type="checkbox" id="onlyNew"> Hanya yang belum pernah dijawab</label>'
+     +'<label class="chk"><input type="checkbox" id="onlyWrong"> Hanya yang terakhir salah</label>'
+   +'</div>'
+   +'<div class="row" style="margin-top:16px">'
+     +'<button class="btn" onclick="startFromSetup()">Mulai drilling</button>'
+     +'<button class="btn ghost" onclick="go(\'home\')">Kembali</button>'
+   +'</div></div>';
+}
+function startFromSetup(){
+  var g=function(id){ var e=document.getElementById(id); return e?e.value:''; };
+  var c=function(id){ var e=document.getElementById(id); return e&&e.checked; };
+  startQuiz({theme:VIEW.theme, count:+g('cnt'), src:g('src'), sub:g('sub'),
+             order:g('ord'), onlyNew:c('onlyNew'), onlyWrong:c('onlyWrong')});
+}
+
+/* ---------- BUILD SESSION ---------- */
+var SESS = null;
+function startQuiz(o){
+  var h = S.hist;
+  var pool = examFilter(o.theme ? byTheme(o.theme) : Q().slice());
+  if(o.src) pool = pool.filter(function(q){return q.sourceId===o.src});
+  if(o.sub) pool = pool.filter(function(q){return q.subtheme===o.sub});
+  if(o.ids) pool = Q().filter(function(q){ return o.ids.indexOf(q.id)>=0; });
+  if(o.onlyNew || o.mode==='new')     pool = pool.filter(function(q){ return !h[q.id]; });
+  if(o.onlyWrong || o.mode==='wrong') pool = pool.filter(function(q){ return h[q.id] && h[q.id].last===0; });
+  if(!pool.length){ alert('Tidak ada soal yang cocok dengan filter itu.'); return; }
+  if(o.order!=='seq') pool = shuffle(pool);
+  var n = o.count ? Math.min(o.count, pool.length) : pool.length;
+  SESS = {list:pool.slice(0,n), i:0, answers:[], open:{}, started:Date.now(), theme:o.theme||null, exam:EXAM};
+  saveSess();
+  go('quiz');
+}
+
+/* ---------- QUIZ ---------- */
+function themeName(id){ var t=THEMES.filter(function(x){return x.id===id})[0]; return t?t.name:id; }
+
+function renderQuiz(){
+  var el = document.getElementById('app');
+  var q = SESS.list[SESS.i], ans = SESS.answers[SESS.i];
+  var n = SESS.list.length, answered = countAnswered();
+  var pct = Math.round(answered/n*100);
+  var p = q.passageId ? PS()[q.passageId] : null;
+  var isOpen = q.type==='open';
+  var last = SESS.i===n-1;
+
+  var opts;
+  if(isOpen){
+    opts = '<textarea id="openAns" oninput="saveOpenDraft()" placeholder="Tulis jawabanmu di sini... '
+      +'panduan jawaban muncul setelah sesi kamu selesaikan">'+esc(SESS.open&&SESS.open[SESS.i]||'')+'</textarea>';
+  } else {
+    opts = (q.options||[]).map(function(o,k){
+      return '<button class="opt'+(ans===k?' sel':'')+'" onclick="answer('+k+')">'
+        +'<span class="k">'+'ABCDEFGH'[k]+'</span><span>'+rich(o)+'</span></button>';
+    }).join('');
+  }
+
+  var nums = SESS.list.map(function(qq,k){
+    var filled = qq.type==='open' ? !!(SESS.open&&SESS.open[k]) : SESS.answers[k]!=null;
+    return '<button class="qnum'+(k===SESS.i?' cur':'')+(filled?' done':'')
+      +(isFlagged(qq.id)?' flag':'')+'" onclick="jumpQ('+k+')">'+(k+1)+'</button>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="qtop">'
+      +'<span class="pill">'+esc(themeName(q.theme))+'</span>'
+      +(q.subtheme&&q.subtheme!==themeName(q.theme)?'<span class="pill grey">'+esc(q.subtheme)+'</span>':'')
+      +'<span class="small muted">Soal '+(SESS.i+1)+' / '+n+'</span>'
+      +'<div class="prog"><i style="width:'+pct+'%"></i></div>'
+      +'<span class="small muted">'+answered+' terjawab</span>'
+      +'<button class="iconbtn" onclick="flagNow()">'+(isFlagged(q.id)?'★ Ditandai':'☆ Tandai')+'</button>'
+      +'<button class="iconbtn" onclick="exitQuiz()">Keluar</button>'
+    +'</div>'
+    +'<div class="card pad" style="margin-bottom:16px">'
+      +'<p class="kicker">Navigasi soal</p>'
+      +'<div class="qnav">'+nums+'</div>'
+      +'<div class="legend">'
+        +'<span><i style="background:var(--brand)"></i>sedang dibuka</span>'
+        +'<span><i style="background:var(--brand-soft);border:1.5px solid var(--brand)"></i>sudah dijawab</span>'
+        +'<span><i style="background:var(--sage)"></i>ditandai</span>'
+      +'</div>'
+    +'</div>'
+    +(p? '<div class="passage"><h4>'+esc(p.title||'Bacaan')+'</h4><p>'+rich(p.text)+'</p></div>':'')
+    +'<div class="card pad">'
+      +(q.instruction? '<p class="small muted" style="margin:0 0 12px">'+rich(q.instruction)+'</p>':'')
+      +'<p class="qtext">'+rich(q.question)+'</p>'
+      +opts
+      +'<div class="nav">'
+        +'<button class="btn ghost" onclick="prevQ()" '+(SESS.i===0?'disabled':'')+'>Sebelumnya</button>'
+        +'<div class="sp"></div>'
+        +'<span class="small muted">'+esc(srcName(q.sourceId))+(q.ref?' · '+esc(q.ref):'')+'</span>'
+        +'<button class="btn'+(last?'':' ghost')+'" onclick="finishSession()">Selesai &amp; lihat skor</button>'
+        +(last?'':'<button class="btn" onclick="nextQ()">Berikutnya</button>')
+      +'</div>'
+    +'</div>';
+}
+function answer(k){ SESS.answers[SESS.i]=k; saveSess(); renderQuiz(); }
+function saveOpenDraft(){
+  if(!SESS) return; var q=SESS.list[SESS.i];
+  if(q && q.type==='open'){ var t=document.getElementById('openAns');
+    if(t){ SESS.open=SESS.open||{}; SESS.open[SESS.i]=t.value; saveSess(); } }
+}
+function jumpQ(k){ saveOpenDraft(); SESS.i=k; saveSess(); renderQuiz(); scrollTo(0,0); }
+function nextQ(){ saveOpenDraft(); if(SESS.i<SESS.list.length-1){ SESS.i++; saveSess(); renderQuiz(); scrollTo(0,0); } }
+function prevQ(){ saveOpenDraft(); if(SESS.i>0){ SESS.i--; saveSess(); renderQuiz(); scrollTo(0,0); } }
+function flagNow(){ saveOpenDraft(); toggleFlag(SESS.list[SESS.i].id); renderQuiz(); }
+function exitQuiz(){
+  saveOpenDraft();
+  if(confirm('Keluar dulu? Sesi ini disimpan dan bisa dilanjutkan dari beranda.')) go('home');
+}
+function finishSession(){
+  saveOpenDraft();
+  var left = SESS.list.length - countAnswered();
+  if(left>0 && !confirm('Masih ada '+left+' soal yang belum dijawab. Selesaikan sesi sekarang?')) return;
+  SESS.list.forEach(function(q,i){
+    if(q.type==='open'){ if(SESS.open && SESS.open[i]) markResult(q.id, true); }
+    else if(SESS.answers[i]!=null) markResult(q.id, SESS.answers[i]===q.answer);
+  });
+  SESS.done = true; clearSess(); go('result');
+}
+document.addEventListener('keydown',function(e){
+  if(VIEW.name!=='quiz'||!SESS) return;
+  var tg = e.target && e.target.tagName;
+  if(tg==='TEXTAREA'||tg==='INPUT'||tg==='SELECT'||tg==='BUTTON') return;
+  var q=SESS.list[SESS.i];
+  if(q.type==='open') return;
+  var k='abcdefgh'.indexOf(e.key.toLowerCase());
+  if(k>=0 && q.options && k<q.options.length){ answer(k); e.preventDefault(); }
+  if(e.key==='Enter'){ nextQ(); e.preventDefault(); }
+  if(e.key==='ArrowRight'){ nextQ(); e.preventDefault(); }
+  if(e.key==='ArrowLeft'){ prevQ(); e.preventDefault(); }
+});
+
+/* ---------- RESULT ---------- */
+function viewResult(){
+  var L = 'ABCDEFGH';
+  var scored = SESS.list.filter(function(q){return q.type!=='open'});
+  var n = scored.length, ok = 0, opens = SESS.list.length-n, blank = 0;
+  SESS.list.forEach(function(q,i){
+    if(q.type==='open') return;
+    if(SESS.answers[i]==null) blank++;
+    else if(SESS.answers[i]===q.answer) ok++;
+  });
+  var pct = n?Math.round(ok/n*100):0;
+  var wrongIds = SESS.list.filter(function(q,i){ return q.type!=='open' && SESS.answers[i]!==q.answer; })
+                          .map(function(q){ return q.id; });
+  SESS.wrongIds = wrongIds;
+
+  var items = SESS.list.map(function(q,i){
+    var head = '<div class="small muted">'+(i+1)+' · '+esc(themeName(q.theme))+' · '+esc(srcName(q.sourceId))+'</div>'
+      +'<div style="margin:6px 0;max-width:66ch">'+rich(q.question)+'</div>';
+    if(q.type==='open'){
+      return '<div class="ri">'+head
+        +(SESS.open&&SESS.open[i]
+          ? '<div class="expl"><p class="kicker">Jawabanmu</p><div style="white-space:pre-wrap">'+esc(SESS.open[i])+'</div></div>'
+          : '<div class="small muted">(tidak diisi)</div>')
+        +'<div class="expl"><p class="kicker">Panduan jawaban</p>'+rich(q.explain||'Tidak ada panduan untuk soal ini.')+'</div>'
+      +'</div>';
+    }
+    var a = SESS.answers[i], good = a===q.answer;
+    var yours = (a!=null&&a>=0&&q.options&&q.options[a]) ? L[a]+'. '+rich(q.options[a]) : 'tidak dijawab';
+    var key = (q.options&&q.options[q.answer]) ? L[q.answer]+'. '+rich(q.options[q.answer]) : L[q.answer];
+    return '<div class="ri">'+head
+      +'<div class="ansline">'
+        +(good ? '<span style="color:var(--ok)"><b>✓ Benar</b> — '+key+'</span>'
+               : '<span style="color:var(--bad)"><b>✗ Jawabmu</b> '+yours+'</span>'
+                 +'<span style="color:var(--ok)"><b>Kunci</b> '+key+'</span>')
+      +'</div>'
+      +'<div class="expl"><p class="kicker">Pembahasan</p>'
+        +(q.explain?rich(q.explain):'<span class="muted">Tidak ada pembahasan untuk soal ini.</span>')+'</div>'
+    +'</div>';
+  }).join('');
+
+  return '<p class="kicker" style="margin-top:38px">'+examName(SESS.exam||EXAM)+(SESS.theme?' · '+esc(themeName(SESS.theme)):'')+'</p>'
+   +'<h1 style="margin-top:0">Hasil sesi</h1>'
+   +'<div class="card pad" style="margin-top:16px"><div class="row" style="align-items:flex-end;gap:24px">'
+     +'<div><div class="score">'+pct+'%</div><div class="small muted" style="margin-top:8px">'+ok+' benar dari '+n+' soal berkunci'
+       +(blank?' · '+blank+' dikosongkan':'')+(opens?' · '+opens+' soal terbuka':'')+'</div></div>'
+     +'<div class="sp" style="flex:1"></div>'
+     +(wrongIds.length?'<button class="btn" onclick="retryWrong()">Ulangi '+wrongIds.length+' yang salah</button>':'')
+     +'<button class="btn ghost" onclick="go(\'home\')">Selesai</button>'
+   +'</div></div>'
+   +'<h2>Pembahasan per soal</h2><div class="card pad rlist">'+items+'</div>';
+}
+
+/* ---------- BELAJAR: daftar materi ---------- */
+function openLesson(id, step){ go('lesson', {id:id, step:step||0}); }
+
+function viewLearn(){
+  if(!LESSONS.length) return '<div class="empty"><h1>Materi belum termuat</h1>'
+    +'<p>Pastikan file <b>data/lessons-*.js</b> ada di samping file ini.</p></div>';
+  var d = lessonsDoneCount(), pct = Math.round(d/LESSONS.length*100);
+  var no = 0;
+  var body = lessonUnits().map(function(u){
+    var items = LESSONS.filter(function(l){ return l.unit===u; }).map(function(l){
+      no++;
+      var fin = lessonDone(l.id), nq = lessonQuestions(l).length;
+      return '<button class="lcard'+(fin?' fin':'')+'" onclick="openLesson(\''+l.id+'\')">'
+        +'<span class="num">'+(fin?'✓':no)+'</span>'
+        +'<span><span class="lt2">'+esc(l.title)+'</span>'
+        +'<span class="ld2" style="display:block">'+esc(l.blurb)+'</span>'
+        +'<span class="lm"><span class="pill grey">'+lessonSteps(l).length+' bagian</span>'
+        +(nq?'<span class="pill grey">'+nq+' soal latihan</span>':'')
+        +(fin?'<span class="pill">selesai</span>':'')+'</span></span>'
+      +'</button>';
+    }).join('');
+    return '<div class="unit">'+esc(u)+'</div><div class="grid g3">'+items+'</div>';
+  }).join('');
+
+  return '<p class="kicker" style="margin-top:38px">Belajar dulu yuk</p>'
+   +'<h1 style="margin-top:0">Kurikulum drill</h1>'
+   +'<p class="sub">Pilih topik mana saja — tidak harus urut. Tiap topik berisi pembahasan, contoh soal '
+     +'beserta alasannya, lalu latihan dari bank soal topik yang sama.</p>'
+   +'<div class="card pad" style="margin-top:18px"><div class="row" style="align-items:center;gap:18px">'
+     +'<div style="min-width:120px"><div class="score" style="font-size:40px">'+pct+'%</div>'
+     +'<div class="small muted" style="margin-top:4px">'+d+' dari '+LESSONS.length+' pelajaran</div></div>'
+     +'<div style="flex:1;min-width:180px"><div class="bar"><i style="width:'+pct+'%"></i></div></div>'
+     +(d>0 && d<LESSONS.length?'<button class="btn ghost" onclick="openLesson(\''+nextLesson().id+'\')">Lanjut yang belum: '+esc(nextLesson().title)+'</button>':'')
+   +'</div></div>'
+   +body;
+}
+
+/* ---------- BELAJAR: isi pelajaran ---------- */
+var EXA = {};   // jawaban contoh soal: {lessonId#step: pilihan}
+function setStep(n){
+  var l = lessonById(VIEW.id); if(!l) return;
+  VIEW.step = Math.max(0, Math.min(n, lessonSteps(l).length-1));
+  renderLesson(); scrollTo(0,0);
+}
+function exAnswer(k){
+  EXA[VIEW.id+'#'+VIEW.step] = k; renderLesson();
+}
+function finishLesson(){
+  LP[VIEW.id] = {done:true, at:Date.now()}; saveLP();
+  renderLesson(); scrollTo(0,0);
+}
+
+function renderLesson(){
+  var el = document.getElementById('app');
+  var l = lessonById(VIEW.id);
+  if(!l){ el.innerHTML = '<div class="empty"><h1>Pelajaran tidak ditemukan</h1></div>'; return; }
+  var steps = lessonSteps(l), i = Math.max(0, Math.min(VIEW.step||0, steps.length-1)), st = steps[i];
+  var last = i===steps.length-1, fin = lessonDone(l.id), nq = lessonQuestions(l).length;
+
+  var dots = steps.map(function(s,k){
+    return '<button class="'+(k===i?'on':(k<i?'past':''))+'" onclick="setStep('+k+')" '
+      +'title="'+esc(s.t)+'" aria-label="Bagian '+(k+1)+': '+esc(s.t)+'"></button>';
+  }).join('');
+
+  var body;
+  if(st.ex){
+    var pick = EXA[l.id+'#'+i], done = pick!=null;
+    var opts = st.ex.o.map(function(o,k){
+      var cls = 'opt';
+      if(done){ cls += ' locked';
+        if(k===st.ex.a) cls += ' correct';
+        else if(k===pick) cls += ' wrong';
+      }
+      return '<button class="'+cls+'" '+(done?'disabled':'onclick="exAnswer('+k+')"')+'>'
+        +'<span class="k">'+'ABCDEFGH'[k]+'</span><span>'+o+'</span></button>';
+    }).join('');
+    body = '<div class="exbox">'
+      +'<p class="kicker">Contoh soal '+(i+1)+' — jawab dulu, alasannya muncul setelah itu</p>'
+      +'<p class="qtext">'+st.ex.q+'</p>'+opts
+      +(done? '<div class="fb '+(pick===st.ex.a?'ok':'bad')+'"><b>'
+          +(pick===st.ex.a?'Tepat':'Belum tepat')+'</b>'+st.ex.w+'</div>' : '')
+    +'</div>';
+  } else {
+    body = '<div class="lesson">'+st.h+'</div>';
+  }
+
+  var tail = '';
+  if(last){
+    tail = '<div class="card pad" style="margin-top:16px;border-color:var(--brand)">'
+      +'<p class="kicker">Sudah paham? langsung pakai</p>'
+      +'<div class="lt2" style="font-family:var(--font-display);font-size:20px;margin-bottom:6px">Latihan soal topik ini</div>'
+      +'<p class="small muted" style="margin:0 0 14px">'
+        +(nq? nq+' soal '+esc(examName(EXAM))+' dari seluruh bank cocok dengan topik '+esc(l.title)
+             +'. Latihan memakai alur ujian biasa: kumpulkan semua jawaban dulu, skor dan pembahasan di akhir.'
+            : 'Belum ada soal di bank yang cocok dengan topik ini pada pilihan ujian '+esc(examName(EXAM))+'.')+'</p>'
+      +'<div class="row">'
+        +(nq?'<button class="btn" onclick="startLessonDrill(\''+l.id+'\',10)">Latihan '+Math.min(10,nq)+' soal</button>':'')
+        +(nq>10?'<button class="btn ghost" onclick="startLessonDrill(\''+l.id+'\','+Math.min(25,nq)+')">Latihan '+Math.min(25,nq)+' soal</button>':'')
+        +(nq>25?'<button class="btn ghost" onclick="startLessonDrill(\''+l.id+'\','+nq+')">Latihan semua '+nq+' soal</button>':'')
+        +(fin?'':'<button class="btn ghost" onclick="finishLesson()">Tandai pelajaran selesai</button>')
+        +'<div class="sp" style="flex:1"></div>'
+        +(nextLesson() && nextLesson().id!==l.id
+            ? '<button class="btn ghost" onclick="openLesson(\''+nextLesson().id+'\')">Pelajaran berikutnya →</button>' : '')
+      +'</div></div>';
+  }
+
+  el.innerHTML =
+    '<div class="qtop">'
+      +'<span class="pill">'+esc(l.unit)+'</span>'
+      +(fin?'<span class="pill grey">✓ selesai</span>':'')
+      +'<span class="small muted">Bagian '+(i+1)+' / '+steps.length+'</span>'
+      +'<div class="stepdots" style="flex:1">'+dots+'</div>'
+      +'<button class="iconbtn" onclick="go(\'learn\')">Semua materi</button>'
+    +'</div>'
+    +'<h1 style="margin:8px 0 4px">'+esc(l.title)+'</h1>'
+    +'<p class="sub" style="margin-bottom:18px">'+esc(l.blurb)+'</p>'
+    +'<div class="card pad">'
+      +(st.ex?'':'<h3 style="font-family:var(--font-display);font-weight:400;font-size:15px;'
+        +'letter-spacing:.1em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 14px">'+esc(st.t)+'</h3>')
+      +body
+      +'<div class="nav">'
+        +'<button class="btn ghost" onclick="setStep('+(i-1)+')" '+(i===0?'disabled':'')+'>Sebelumnya</button>'
+        +'<div class="sp"></div>'
+        +(last
+          ? '<button class="btn'+(fin?' ghost':'')+'" onclick="finishLesson()">'+(fin?'Sudah selesai ✓':'Selesai — tandai paham')+'</button>'
+          : '<button class="btn" onclick="setStep('+(i+1)+')">Berikutnya</button>')
+      +'</div>'
+    +'</div>'
+    + tail;
+}
+
+/* ---------- STATS ---------- */
+function viewStats(){
+  var h=S.hist, rows=THEMES.map(function(t){
+    var qs=byTheme(t.id); if(!qs.length) return '';
+    var d=0,n=0,ok=0;
+    qs.forEach(function(q){ var e=h[q.id]; if(e){d++;n+=e.n;ok+=e.ok;} });
+    return '<tr><td>'+t.name+'</td><td>'+d+'/'+qs.length+' soal · '+(n?Math.round(ok/n*100):0)+'% akurasi</td></tr>';
+  }).join('');
+  var srcRows = Object.keys(window.TOEFLDRILL.sources).map(function(id){
+    var s=window.TOEFLDRILL.sources[id];
+    var c=Q().filter(function(q){return q.sourceId===id}).length;
+    return '<tr><td>'+esc(s.name)+'</td><td>'+c+' soal</td></tr>';
+  }).join('');
+  return '<h1>Statistik</h1><p class="sub">Tersimpan di browser ini saja.</p>'
+   +'<div class="card pad" style="margin-top:14px"><table class="kv">'+rows+'</table></div>'
+   +'<h2>Sumber soal</h2><div class="card pad"><table class="kv">'+srcRows+'</table></div>'
+   +'<h2>Kelola</h2><div class="row">'
+     +'<button class="btn ghost" onclick="exportProg()">Ekspor progres (.json)</button>'
+     +'<button class="btn ghost" onclick="document.getElementById(\'imp\').click()">Impor progres</button>'
+     +'<input type="file" id="imp" hidden accept=".json" onchange="importProg(this)">'
+     +'<button class="btn ghost" onclick="if(confirm(\'Hapus semua progres?\')){store.set(\'td_hist\',{});store.set(\'td_flags\',[]);render()}">Reset progres</button>'
+   +'</div>'
+   +'<div class="notice">Kalau file ini dibuka langsung dari disk, sebagian browser memblokir penyimpanan otomatis. Pakai <b>Ekspor progres</b> sebelum menutup tab kalau kamu mau menyimpannya.</div>';
+}
+function exportProg(){
+  var blob=new Blob([JSON.stringify({hist:S.hist,flags:S.flags},null,1)],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='progres-drill-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+}
+function importProg(inp){
+  var f=inp.files[0]; if(!f) return; var r=new FileReader();
+  r.onload=function(){ try{ var d=JSON.parse(r.result);
+    if(d.hist) S.hist=d.hist; if(d.flags) S.flags=d.flags; render(); alert('Progres dimuat.');
+  }catch(e){ alert('File tidak terbaca.'); } };
+  r.readAsText(f);
+}
+
+/* ---------- FLAGS ---------- */
+function viewFlags(){
+  var ids=S.flags, qs=Q().filter(function(q){return ids.indexOf(q.id)>=0});
+  if(!qs.length) return '<h1>Soal ditandai</h1><div class="empty">Belum ada soal yang kamu tandai. Tekan ☆ saat mengerjakan.</div>';
+  return '<h1>Soal ditandai</h1><p class="sub">'+qs.length+' soal.</p>'
+   +'<div class="row" style="margin:14px 0"><button class="btn" onclick="startFlagged()">Kerjakan semua</button></div>'
+   +'<div class="card pad rlist">'+qs.map(function(q){
+      return '<div class="ri"><div class="small muted">'+esc(themeName(q.theme))+' · '+esc(srcName(q.sourceId))+'</div>'
+        +'<div>'+rich(q.question)+'</div></div>'; }).join('')+'</div>';
+}
+
+function retryWrong(){ if(SESS && SESS.wrongIds && SESS.wrongIds.length) startQuiz({ids:SESS.wrongIds.slice(), order:'seq'}); }
+function startFlagged(){ var f=S.flags.slice(); if(f.length) startQuiz({ids:f, order:'seq'}); }
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOEFL / IELTS Drill</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#15181d; --muted:#5f6672; --line:#e3e6ea;
+  --brand:#2f5fd0; --brand-soft:#e8eefb; --ok:#137a4b; --ok-soft:#e3f5eb;
+  --bad:#b3261e; --bad-soft:#fdeceb; --warn:#8a5a00; --warn-soft:#fdf3e0;
+  --radius:12px; --shadow:0 1px 2px rgba(15,20,30,.06),0 6px 18px rgba(15,20,30,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216; --panel:#171b21; --ink:#e8eaee; --muted:#98a1af; --line:#262c35;
+    --brand:#6d9bff; --brand-soft:#1b2740; --ok:#4ad493; --ok-soft:#13291f;
+    --bad:#ff8a80; --bad-soft:#2c1a19; --warn:#f0c064; --warn-soft:#2b2214;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216; --panel:#171b21; --ink:#e8eaee; --muted:#98a1af; --line:#262c35;
+  --brand:#6d9bff; --brand-soft:#1b2740; --ok:#4ad493; --ok-soft:#13291f;
+  --bad:#ff8a80; --bad-soft:#2c1a19; --warn:#f0c064; --warn-soft:#2b2214;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px 80px}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:var(--panel);
+  border-bottom:1px solid var(--line);
+}
+.hd{max-width:1080px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:16px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--brand)}
+.hd .sp{flex:1}
+.iconbtn{
+  border:1px solid var(--line);background:transparent;color:var(--muted);
+  border-radius:9px;padding:6px 11px;font-size:13px;cursor:pointer;font-family:inherit
+}
+.iconbtn:hover{color:var(--ink);border-color:var(--brand)}
+
+/* ---------- generic ---------- */
+h1{font-size:26px;letter-spacing:-.02em;margin:26px 0 6px}
+h2{font-size:17px;letter-spacing:-.01em;margin:28px 0 10px}
+.sub{color:var(--muted);margin:0 0 4px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.pad{padding:16px 18px}
+.grid{display:grid;gap:12px}
+@media(min-width:700px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+.btn{
+  border:0;background:var(--brand);color:#fff;border-radius:10px;padding:10px 16px;
+  font:600 14px/1 inherit;cursor:pointer
+}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pill{
+  display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:600;
+  background:var(--brand-soft);color:var(--brand);border:1px solid transparent
+}
+.pill.grey{background:transparent;color:var(--muted);border-color:var(--line)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* ---------- theme cards ---------- */
+.tcard{
+  text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;cursor:pointer;font-family:inherit;color:var(--ink);box-shadow:var(--shadow);
+  transition:border-color .12s,transform .12s
+}
+.tcard:hover{border-color:var(--brand);transform:translateY(-1px)}
+.tcard .tt{font-weight:650;font-size:15.5px;margin-bottom:3px}
+.tcard .td{font-size:13px;color:var(--muted);min-height:34px}
+.tcard .tn{margin-top:10px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.bar{height:5px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar > i{display:block;height:100%;background:var(--ok);border-radius:99px}
+
+/* ---------- quiz ---------- */
+.qtop{display:flex;align-items:center;gap:10px;margin:18px 0 12px;flex-wrap:wrap}
+.prog{flex:1;min-width:140px;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.prog > i{display:block;height:100%;background:var(--brand)}
+.passage{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;margin-bottom:14px;max-height:340px;overflow:auto;box-shadow:var(--shadow)
+}
+.passage h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.passage p{margin:0 0 10px;white-space:pre-wrap}
+.qtext{font-size:16.5px;line-height:1.55;margin:0 0 14px;white-space:pre-wrap}
+.qtext u{text-decoration:none;border-bottom:2px solid var(--muted);padding-bottom:1px}
+.qtext sup{color:var(--brand);font-weight:700;font-size:11px;margin-left:1px}
+.opt{
+  display:flex;gap:11px;width:100%;text-align:left;background:var(--panel);color:var(--ink);
+  border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:8px;
+  cursor:pointer;font:inherit;transition:border-color .1s,background .1s
+}
+.opt:hover:not(.locked){border-color:var(--brand);background:var(--brand-soft)}
+.opt .k{
+  flex:none;width:24px;height:24px;border-radius:6px;background:var(--line);color:var(--muted);
+  display:grid;place-items:center;font-size:12.5px;font-weight:700
+}
+.opt.locked{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .k{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{background:var(--bad);color:#fff}
+.fb{border-radius:10px;padding:12px 14px;margin:12px 0;font-size:14.2px;border:1px solid}
+.fb.ok{background:var(--ok-soft);border-color:var(--ok)}
+.fb.bad{background:var(--bad-soft);border-color:var(--bad)}
+.fb > b:first-child{display:block;margin-bottom:3px}
+.nav{display:flex;gap:10px;margin-top:16px;align-items:center}
+.nav .sp{flex:1}
+
+/* ---------- result ---------- */
+.score{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.rlist .ri{border-top:1px solid var(--line);padding:12px 0}
+.rlist .ri:first-child{border-top:0}
+table.kv{width:100%;border-collapse:collapse;font-size:13.5px}
+table.kv td{padding:5px 0;border-bottom:1px solid var(--line)}
+table.kv td:last-child{text-align:right;font-weight:600}
+.empty{padding:36px;text-align:center;color:var(--muted)}
+select,input[type=number]{
+  font:inherit;padding:7px 10px;border-radius:9px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink)
+}
+.chk{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted);cursor:pointer}
+.notice{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:11px 14px;font-size:13.5px;margin:14px 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="logo" onclick="go('home')"><span class="dot"></span> TOEFL / IELTS Drill</div>
+    <div class="sp"></div>
+    <button class="iconbtn" onclick="go('stats')">Statistik</button>
+    <button class="iconbtn" onclick="go('flags')">Ditandai</button>
+    <button class="iconbtn" onclick="toggleTheme()" id="themeBtn">Tema</button>
+  </div>
+</header>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   REGISTRY — diisi oleh file-file di folder data/
+   ============================================================ */
+window.TOEFLDRILL = {
+  questions: [],
+  passages: {},
+  sources: {},
+  addBank: function(bank){
+    var src = bank.source || {};
+    if(src.id) this.sources[src.id] = src;
+    if(bank.passages) for(var k in bank.passages) this.passages[k] = bank.passages[k];
+    (bank.questions||[]).forEach(function(q){
+      q.sourceId = q.sourceId || src.id;
+      window.TOEFLDRILL.questions.push(q);
+    });
+  }
+};
+</script>
+
+<!-- ====== BANK SOAL (tambah baris baru tiap tahap selesai) ====== -->
+<script src="data/bank-01-cmedia.js"></script>
+<script src="data/bank-02-ets-ibt.js"></script>
+<script src="data/bank-03-petersons-structure.js"></script>
+<script src="data/bank-04-petersons-reading.js"></script>
+<script src="data/bank-05-bestofbest.js"></script>
+<script src="data/bank-06-barron-ielts.js"></script>
+<script src="data/bank-07-barron-listening.js"></script>
+<script src="data/bank-08-ielts202.js"></script>
+<script src="data/bank-09-petersons-inline.js"></script>
+<script src="data/bank-10-barron-completion.js"></script>
+<script src="data/bank-11-barron-isian.js"></script>
+<script src="data/bank-12-barron-pulih.js"></script>
+<!-- ============================================================ -->
+
+<script>
+/* ============================================================
+   TEMA
+   ============================================================ */
+var THEMES = [
+  {id:'structure',  name:'Structure',           desc:'Melengkapi kalimat rumpang — tata bahasa inti TOEFL.'},
+  {id:'written',    name:'Written Expression',  desc:'Mencari bagian kalimat yang salah secara gramatikal.'},
+  {id:'reading',    name:'Reading',             desc:'Pemahaman bacaan akademik: main idea, inference, detail.'},
+  {id:'vocabulary', name:'Vocabulary',          desc:'Makna kata dalam konteks & sinonim.'},
+  {id:'listening',  name:'Listening',           desc:'Soal simak — dilengkapi transkrip sebagai pengganti audio.'},
+  {id:'writing',    name:'Writing',             desc:'Prompt esai & integrated writing untuk latihan menulis.'},
+  {id:'speaking',   name:'Speaking',            desc:'Prompt bicara untuk latihan lisan mandiri.'}
+];
+
+/* ============================================================
+   STATE / PENYIMPANAN
+   ============================================================ */
+var MEM = {};
+var store = {
+  get:function(k,d){
+    try{ var v = localStorage.getItem(k); return v===null? d : JSON.parse(v); }
+    catch(e){ return (k in MEM)? MEM[k] : d; }
+  },
+  set:function(k,v){
+    try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ MEM[k]=v; }
+  }
+};
+var S = {
+  get hist(){ return store.get('td_hist',{}); },      // {qid:{n,ok,last}}
+  set hist(v){ store.set('td_hist',v); },
+  get flags(){ return store.get('td_flags',[]); },
+  set flags(v){ store.set('td_flags',v); }
+};
+function markResult(qid, ok){
+  var h = S.hist; var e = h[qid] || {n:0,ok:0};
+  e.n++; if(ok) e.ok++; e.last = ok?1:0; h[qid]=e; S.hist=h;
+}
+function toggleFlag(qid){
+  var f = S.flags; var i = f.indexOf(qid);
+  if(i<0) f.push(qid); else f.splice(i,1);
+  S.flags = f; return i<0;
+}
+function isFlagged(qid){ return S.flags.indexOf(qid)>=0; }
+
+function toggleTheme(){
+  var r = document.documentElement;
+  var cur = r.getAttribute('data-theme');
+  var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+           : (matchMedia('(prefers-color-scheme: dark)').matches ? 'light':'dark');
+  r.setAttribute('data-theme', next); store.set('td_theme', next);
+}
+(function(){ var t = store.get('td_theme',null); if(t) document.documentElement.setAttribute('data-theme',t); })();
+
+/* ============================================================
+   HELPER
+   ============================================================ */
+var Q  = function(){ return window.TOEFLDRILL.questions; };
+var PS = function(){ return window.TOEFLDRILL.passages; };
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function rich(s){ // izinkan <u> <b> <i> <sup> dari bank soal
+  return esc(s).replace(/&lt;(\/?)(u|b|i|sup|em|strong)&gt;/g,'<$1$2>')
+               .replace(/&lt;br\s*\/?&gt;/g,'<br>');
+}
+function byTheme(t){ return Q().filter(function(q){ return q.theme===t; }); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+function srcName(id){ var s = window.TOEFLDRILL.sources[id]; return s? s.name : (id||'—'); }
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+var VIEW = {name:'home'};
+function go(name, opt){ VIEW = Object.assign({name:name}, opt||{}); render(); scrollTo(0,0); }
+function render(){
+  var el = document.getElementById('app');
+  if(VIEW.name==='home')   el.innerHTML = viewHome();
+  else if(VIEW.name==='setup') el.innerHTML = viewSetup();
+  else if(VIEW.name==='quiz')  { renderQuiz(); return; }
+  else if(VIEW.name==='result')el.innerHTML = viewResult();
+  else if(VIEW.name==='stats') el.innerHTML = viewStats();
+  else if(VIEW.name==='flags') el.innerHTML = viewFlags();
+}
+
+/* ---------- HOME ---------- */
+function viewHome(){
+  var all = Q();
+  if(!all.length) return '<div class="empty"><h1>Bank soal belum termuat</h1>'
+    +'<p>Pastikan folder <b>data/</b> ada di samping file ini dan dibuka lewat file HTML-nya langsung.</p></div>';
+  var h = S.hist;
+  var cards = THEMES.map(function(t){
+    var qs = byTheme(t.id); if(!qs.length) return '';
+    var done = qs.filter(function(q){ return h[q.id]; }).length;
+    var pct = Math.round(done/qs.length*100);
+    return '<button class="tcard" onclick="go(\'setup\',{theme:\''+t.id+'\'})">'
+      +'<div class="tt">'+t.name+'</div><div class="td">'+t.desc+'</div>'
+      +'<div class="tn"><span>'+qs.length+' soal</span><span>'+pct+'% pernah dikerjakan</span></div>'
+      +'<div class="bar"><i style="width:'+pct+'%"></i></div></button>';
+  }).join('');
+  var doneAll = Object.keys(h).length;
+  return '<h1>Mau drilling apa hari ini?</h1>'
+   +'<p class="sub">'+all.length+' soal siap dikerjakan · tanpa batas waktu · '+doneAll+' soal sudah pernah kamu jawab.</p>'
+   +'<div class="grid g3" style="margin-top:18px">'+cards+'</div>'
+   +'<h2>Mode cepat</h2>'
+   +'<div class="row">'
+     +'<button class="btn" onclick="startQuiz({theme:null,count:20,mode:\'mix\'})">Campur 20 soal</button>'
+     +'<button class="btn ghost" onclick="startQuiz({theme:null,count:20,mode:\'wrong\'})">Ulang yang pernah salah</button>'
+     +'<button class="btn ghost" onclick="startQuiz({theme:null,count:20,mode:\'new\'})">Yang belum pernah</button>'
+   +'</div>';
+}
+
+/* ---------- SETUP ---------- */
+function viewSetup(){
+  var t = THEMES.filter(function(x){return x.id===VIEW.theme})[0];
+  var qs = byTheme(VIEW.theme);
+  var srcN = {}; qs.forEach(function(q){ srcN[q.sourceId] = (srcN[q.sourceId]||0)+1; });
+  var srcIds = Object.keys(srcN).sort(function(a,b){ return srcN[b]-srcN[a]; });
+  var subN = {}; qs.forEach(function(q){ if(q.subtheme) subN[q.subtheme] = (subN[q.subtheme]||0)+1; });
+  var subs = Object.keys(subN).sort(function(a,b){ return subN[b]-subN[a] || a.localeCompare(b); });
+  return '<h1>'+t.name+'</h1><p class="sub">'+t.desc+' — '+qs.length+' soal tersedia.</p>'
+   +'<div class="card pad" style="margin-top:16px">'
+   +'<div class="row" style="gap:16px">'
+     +'<label class="small">Jumlah soal<br><select id="cnt">'
+       +[10,20,30,50,100,qs.length].filter(function(v,i,a){return v<=qs.length&&a.indexOf(v)===i})
+         .map(function(v){return '<option value="'+v+'">'+v+'</option>'}).join('')
+     +'</select></label>'
+     +'<label class="small">Sumber<br><select id="src"><option value="">Semua sumber</option>'
+       +srcIds.map(function(s){return '<option value="'+esc(s)+'">'+esc(srcName(s))+' ('+srcN[s]+')</option>'}).join('')
+     +'</select></label>'
+     +(subs.length>1?'<label class="small">Sub-tema<br><select id="sub"><option value="">Semua</option>'
+       +subs.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+' ('+subN[s]+')</option>'}).join('')+'</select></label>':'')
+     +'<label class="small">Urutan<br><select id="ord"><option value="rand">Acak</option><option value="seq">Sesuai buku</option></select></label>'
+   +'</div>'
+   +'<div class="row" style="margin-top:14px">'
+     +'<label class="chk"><input type="checkbox" id="onlyNew"> Hanya yang belum pernah dijawab</label>'
+     +'<label class="chk"><input type="checkbox" id="onlyWrong"> Hanya yang terakhir salah</label>'
+   +'</div>'
+   +'<div class="row" style="margin-top:16px">'
+     +'<button class="btn" onclick="startFromSetup()">Mulai drilling</button>'
+     +'<button class="btn ghost" onclick="go(\'home\')">Kembali</button>'
+   +'</div></div>';
+}
+function startFromSetup(){
+  var g=function(id){ var e=document.getElementById(id); return e?e.value:''; };
+  var c=function(id){ var e=document.getElementById(id); return e&&e.checked; };
+  startQuiz({theme:VIEW.theme, count:+g('cnt'), src:g('src'), sub:g('sub'),
+             order:g('ord'), onlyNew:c('onlyNew'), onlyWrong:c('onlyWrong')});
+}
+
+/* ---------- BUILD SESSION ---------- */
+var SESS = null;
+function startQuiz(o){
+  var h = S.hist;
+  var pool = o.theme ? byTheme(o.theme) : Q().slice();
+  if(o.src) pool = pool.filter(function(q){return q.sourceId===o.src});
+  if(o.sub) pool = pool.filter(function(q){return q.subtheme===o.sub});
+  if(o.ids) pool = Q().filter(function(q){ return o.ids.indexOf(q.id)>=0; });
+  if(o.onlyNew || o.mode==='new')     pool = pool.filter(function(q){ return !h[q.id]; });
+  if(o.onlyWrong || o.mode==='wrong') pool = pool.filter(function(q){ return h[q.id] && h[q.id].last===0; });
+  if(!pool.length){ alert('Tidak ada soal yang cocok dengan filter itu.'); return; }
+  if(o.order!=='seq') pool = shuffle(pool);
+  var n = o.count ? Math.min(o.count, pool.length) : pool.length;
+  SESS = {list:pool.slice(0,n), i:0, answers:[], started:Date.now(), theme:o.theme};
+  go('quiz');
+}
+
+/* ---------- QUIZ ---------- */
+function renderQuiz(){
+  var el = document.getElementById('app');
+  var q = SESS.list[SESS.i];
+  var ans = SESS.answers[SESS.i];
+  var pct = Math.round(SESS.i/SESS.list.length*100);
+  var p = q.passageId ? PS()[q.passageId] : null;
+
+  var isOpen = q.type==='open';
+  var opts='', fb='';
+
+  if(isOpen){
+    opts = '<textarea id="openAns" placeholder="Tulis jawabanmu di sini... (tidak dinilai otomatis)" '
+      +'style="width:100%;min-height:150px;font:inherit;padding:11px 13px;border-radius:10px;'
+      +'border:1px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical">'
+      +esc(SESS.open&&SESS.open[SESS.i]||'')+'</textarea>'
+      +'<div class="row" style="margin-top:10px">'
+      +(ans==null?'<button class="btn ghost" onclick="finishOpen()">Selesai — tampilkan panduan jawaban</button>':'')
+      +'</div>';
+    if(ans!=null){
+      fb = '<div class="fb ok"><b>Panduan jawaban</b>'+rich(q.explain||'')+'</div>';
+    }
+  } else {
+    opts = (q.options||[]).map(function(o,k){
+      var cls='opt';
+      if(ans!=null){
+        cls+=' locked';
+        if(k===q.answer) cls+=' correct';
+        else if(k===ans) cls+=' wrong';
+      }
+      return '<button class="'+cls+'" '+(ans!=null?'':'onclick="answer('+k+')"')+'>'
+        +'<span class="k">'+'ABCDEFGH'[k]+'</span><span>'+rich(o)+'</span></button>';
+    }).join('');
+    if(ans!=null){
+      var ok = ans===q.answer;
+      fb = '<div class="fb '+(ok?'ok':'bad')+'"><b>'+(ok?'Benar':'Kurang tepat — jawabannya '+'ABCDEFGH'[q.answer])+'</b>'
+         + (q.explain? rich(q.explain) : '<span class="muted">Tidak ada pembahasan untuk soal ini.</span>')+'</div>';
+    }
+  }
+
+  el.innerHTML =
+    '<div class="qtop">'
+      +'<span class="pill">'+esc(themeName(q.theme))+'</span>'
+      +(q.subtheme&&q.subtheme!==themeName(q.theme)?'<span class="pill grey">'+esc(q.subtheme)+'</span>':'')
+      +'<span class="small muted">'+(SESS.i+1)+' / '+SESS.list.length+'</span>'
+      +'<div class="prog"><i style="width:'+pct+'%"></i></div>'
+      +'<button class="iconbtn" onclick="flagNow()">'+(isFlagged(q.id)?'★ Ditandai':'☆ Tandai')+'</button>'
+      +'<button class="iconbtn" onclick="if(confirm(\'Keluar dari sesi ini?\'))go(\'home\')">Keluar</button>'
+    +'</div>'
+    +(p? '<div class="passage"><h4>'+esc(p.title||'Bacaan')+'</h4><p>'+rich(p.text)+'</p></div>':'')
+    +'<div class="card pad">'
+      +(q.instruction? '<p class="small muted" style="margin:0 0 10px">'+rich(q.instruction)+'</p>':'')
+      +'<p class="qtext">'+rich(q.question)+'</p>'
+      +opts+fb
+      +'<div class="nav">'
+        +'<button class="btn ghost" onclick="prevQ()" '+(SESS.i===0?'disabled':'')+'>Sebelumnya</button>'
+        +'<div class="sp"></div>'
+        +'<span class="small muted">'+esc(srcName(q.sourceId))+(q.ref?' · '+esc(q.ref):'')+'</span>'
+        +'<button class="btn" onclick="nextQ()" '+(ans==null?'disabled':'')+'>'
+          +(SESS.i===SESS.list.length-1?'Lihat hasil':'Berikutnya')+'</button>'
+      +'</div>'
+    +'</div>';
+}
+function themeName(id){ var t=THEMES.filter(function(x){return x.id===id})[0]; return t?t.name:id; }
+function answer(k){
+  var q = SESS.list[SESS.i];
+  SESS.answers[SESS.i]=k;
+  markResult(q.id, k===q.answer);
+  renderQuiz();
+}
+function finishOpen(){
+  var q = SESS.list[SESS.i], t = document.getElementById('openAns');
+  SESS.open = SESS.open||{}; SESS.open[SESS.i] = t? t.value : '';
+  SESS.answers[SESS.i] = -1;
+  markResult(q.id, true);
+  renderQuiz();
+}
+function saveOpenDraft(){
+  if(!SESS) return; var q=SESS.list[SESS.i];
+  if(q && q.type==='open'){ var t=document.getElementById('openAns');
+    if(t){ SESS.open=SESS.open||{}; SESS.open[SESS.i]=t.value; } }
+}
+function nextQ(){ saveOpenDraft(); if(SESS.i<SESS.list.length-1){SESS.i++;renderQuiz();scrollTo(0,0);} else go('result'); }
+function prevQ(){ saveOpenDraft(); if(SESS.i>0){SESS.i--;renderQuiz();scrollTo(0,0);} }
+function flagNow(){ saveOpenDraft(); toggleFlag(SESS.list[SESS.i].id); renderQuiz(); }
+document.addEventListener('keydown',function(e){
+  if(VIEW.name!=='quiz'||!SESS) return;
+  if(e.target && e.target.tagName==='TEXTAREA') return;
+  var q=SESS.list[SESS.i], ans=SESS.answers[SESS.i];
+  if(q.type==='open') return;
+  var k='abcd'.indexOf(e.key.toLowerCase());
+  if(k>=0 && ans==null && q.options && k<q.options.length){ answer(k); e.preventDefault(); }
+  if(e.key==='Enter' && ans!=null){ nextQ(); e.preventDefault(); }
+});
+
+/* ---------- RESULT ---------- */
+function viewResult(){
+  var scored = SESS.list.filter(function(q){return q.type!=='open'});
+  var n=scored.length, ok=0, opens=SESS.list.length-n;
+  SESS.list.forEach(function(q,i){ if(q.type!=='open' && SESS.answers[i]===q.answer) ok++; });
+  var pct=n?Math.round(ok/n*100):0;
+  var wrongIds = SESS.list.filter(function(q,i){return q.type!=='open' && SESS.answers[i]!==q.answer}).map(function(q){return q.id});
+  var items = SESS.list.map(function(q,i){
+    if(q.type==='open'){
+      return '<div class="ri"><div class="small muted">'+(i+1)+' · '+esc(themeName(q.theme))+' · soal terbuka</div>'
+        +'<div style="margin:4px 0">'+rich(q.question)+'</div>'
+        +(SESS.open&&SESS.open[i]?'<div class="small" style="white-space:pre-wrap;margin-top:6px">'+esc(SESS.open[i])+'</div>':'<div class="small muted">(tidak diisi)</div>')
+      +'</div>';
+    }
+    var good = SESS.answers[i]===q.answer;
+    return '<div class="ri"><div class="small muted">'+(i+1)+' · '+esc(themeName(q.theme))+' · '+esc(srcName(q.sourceId))+'</div>'
+      +'<div style="margin:4px 0">'+rich(q.question)+'</div>'
+      +'<div class="small">'+(good?'<span style="color:var(--ok)">✓ Benar</span>'
+        :'<span style="color:var(--bad)">✗ Jawabmu '+(SESS.answers[i]!=null&&SESS.answers[i]>=0?'ABCD'[SESS.answers[i]]:'—')
+         +' · kunci '+'ABCD'[q.answer]+'</span>')+'</div>'
+      +(good?'':'<div class="small muted" style="margin-top:4px">'+rich(q.explain||'')+'</div>')
+    +'</div>';
+  }).join('');
+  return '<h1>Hasil sesi</h1>'
+   +'<div class="card pad" style="margin-top:14px"><div class="row" style="align-items:flex-end;gap:22px">'
+     +'<div><div class="score">'+pct+'%</div><div class="small muted">'+ok+' benar dari '+n+' soal berkunci'
+       +(opens?' · '+opens+' soal terbuka':'')+'</div></div>'
+     +'<div class="sp" style="flex:1"></div>'
+     +(wrongIds.length?'<button class="btn" onclick="startQuiz({ids:'+JSON.stringify(wrongIds)+',order:\'seq\'})">Ulangi '+wrongIds.length+' yang salah</button>':'')
+     +'<button class="btn ghost" onclick="go(\'home\')">Selesai</button>'
+   +'</div></div>'
+   +'<h2>Rincian</h2><div class="card pad rlist">'+items+'</div>';
+}
+
+/* ---------- STATS ---------- */
+function viewStats(){
+  var h=S.hist, rows=THEMES.map(function(t){
+    var qs=byTheme(t.id); if(!qs.length) return '';
+    var d=0,n=0,ok=0;
+    qs.forEach(function(q){ var e=h[q.id]; if(e){d++;n+=e.n;ok+=e.ok;} });
+    return '<tr><td>'+t.name+'</td><td>'+d+'/'+qs.length+' soal · '+(n?Math.round(ok/n*100):0)+'% akurasi</td></tr>';
+  }).join('');
+  var srcRows = Object.keys(window.TOEFLDRILL.sources).map(function(id){
+    var s=window.TOEFLDRILL.sources[id];
+    var c=Q().filter(function(q){return q.sourceId===id}).length;
+    return '<tr><td>'+esc(s.name)+'</td><td>'+c+' soal</td></tr>';
+  }).join('');
+  return '<h1>Statistik</h1><p class="sub">Tersimpan di browser ini saja.</p>'
+   +'<div class="card pad" style="margin-top:14px"><table class="kv">'+rows+'</table></div>'
+   +'<h2>Sumber soal</h2><div class="card pad"><table class="kv">'+srcRows+'</table></div>'
+   +'<h2>Kelola</h2><div class="row">'
+     +'<button class="btn ghost" onclick="exportProg()">Ekspor progres (.json)</button>'
+     +'<button class="btn ghost" onclick="document.getElementById(\'imp\').click()">Impor progres</button>'
+     +'<input type="file" id="imp" hidden accept=".json" onchange="importProg(this)">'
+     +'<button class="btn ghost" onclick="if(confirm(\'Hapus semua progres?\')){store.set(\'td_hist\',{});store.set(\'td_flags\',[]);render()}">Reset progres</button>'
+   +'</div>'
+   +'<div class="notice">Kalau file ini dibuka langsung dari disk, sebagian browser memblokir penyimpanan otomatis. Pakai <b>Ekspor progres</b> sebelum menutup tab kalau kamu mau menyimpannya.</div>';
+}
+function exportProg(){
+  var blob=new Blob([JSON.stringify({hist:S.hist,flags:S.flags},null,1)],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='progres-drill-'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+}
+function importProg(inp){
+  var f=inp.files[0]; if(!f) return; var r=new FileReader();
+  r.onload=function(){ try{ var d=JSON.parse(r.result);
+    if(d.hist) S.hist=d.hist; if(d.flags) S.flags=d.flags; render(); alert('Progres dimuat.');
+  }catch(e){ alert('File tidak terbaca.'); } };
+  r.readAsText(f);
+}
+
+/* ---------- FLAGS ---------- */
+function viewFlags(){
+  var ids=S.flags, qs=Q().filter(function(q){return ids.indexOf(q.id)>=0});
+  if(!qs.length) return '<h1>Soal ditandai</h1><div class="empty">Belum ada soal yang kamu tandai. Tekan ☆ saat mengerjakan.</div>';
+  return '<h1>Soal ditandai</h1><p class="sub">'+qs.length+' soal.</p>'
+   +'<div class="row" style="margin:14px 0"><button class="btn" onclick="startQuiz({ids:'+JSON.stringify(ids)+',order:\'seq\'})">Kerjakan semua</button></div>'
+   +'<div class="card pad rlist">'+qs.map(function(q){
+      return '<div class="ri"><div class="small muted">'+esc(themeName(q.theme))+' · '+esc(srcName(q.sourceId))+'</div>'
+        +'<div>'+rich(q.question)+'</div></div>'; }).join('')+'</div>';
+}
+
+render();
+</script>
+</body>
+</html>
